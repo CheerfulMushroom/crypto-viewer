@@ -1,0 +1,35 @@
+.button {
+  display: flex;
+  align-items: center;
+
+  padding: 16px;
+  background: transparent;
+  border: none;
+
+  color: var(--dark);
+
+  &:hover:enabled {
+    color: var(--grey);
+  }
+
+  &:disabled {
+    color: var(--light-grey);
+  }
+
+  &_content {
+    display: inline-block;
+  }
+
+  &_loader {
+    margin-left: 8px;
+  }
+
+  &_color- {
+    &primary {
+      font-weight: bold;
+    }
+    &secondary {
+      font-weight: normal;
+    }
+  }
+}

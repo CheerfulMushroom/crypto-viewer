@@ -1,0 +1,45 @@
+.card {
+  background-color: var(--surface-color);
+
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+
+  &_image {
+    height: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+
+  &_description {
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+  }
+
+  &_title {
+    font-size: 16px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &_subtitle {
+    font-size: 12px;
+    color: var(--grey);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &_content {
+    margin-left: 24px;
+  }
+}

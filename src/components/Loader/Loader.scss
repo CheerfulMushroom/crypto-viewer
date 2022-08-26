@@ -1,0 +1,54 @@
+.loader {
+  $loader-gap: 60deg;
+  $loader-spin-time: 2s;
+
+  display: inline-block;
+
+  &_size- {
+    &s {
+      width: 20px;
+    }
+
+    &m {
+      width: 40px;
+    }
+
+    &l {
+      width: 60px;
+    }
+  }
+
+  &_ring {
+    aspect-ratio: 1;
+    border-style: solid;
+    border-color: var(--grey);
+    border-radius: 50%;
+
+    mask: conic-gradient(transparent $loader-gap, #000 $loader-gap);
+    animation: loader_ring_animation $loader-spin-time linear infinite;
+
+    &_size- {
+      &s {
+        border-width: 3px;
+      }
+
+      &m {
+        border-width: 4.5px;
+      }
+
+      &l {
+        border-width: 6px;
+      }
+    }
+  }
+}
+
+@keyframes loader_ring_animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,45 @@
+.check-box {
+  position: relative;
+
+  appearance: none;
+  background-color: var(--surface-color);
+  margin: 0;
+
+  width: 25px;
+  aspect-ratio: 1;
+  border: 1px solid var(--light-grey);
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  &::before {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+
+    box-sizing: border-box;
+    content: '';
+    width: 75%;
+    height: 40%;
+    border: solid transparent;
+    border-width: 0 0 3px 3px;
+  }
+
+  &:checked::before {
+    border-color: var(--grey);
+  }
+
+  &:disabled {
+    background-color: var(--background-color);
+
+    &::before {
+      border-color: var(--light-grey);
+    }
+  }
+
+  &:focus {
+    outline: none;
+    border-width: 2px;
+    border-color: var(--grey);
+  }
+}

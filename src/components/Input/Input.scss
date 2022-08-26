@@ -1,0 +1,26 @@
+.input {
+  position: relative;
+  display: inline-block;
+
+  &_icon {
+    height: 14px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &_field {
+    height: 40px;
+
+    border: 1px solid var(--very-light-grey);
+    border-radius: 4px;
+
+    padding-left: 30px;
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--light-grey);
+    }
+  }
+}
