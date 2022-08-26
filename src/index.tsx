@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Loader, LoaderSize } from './components/Loader/Loader';
-import { WithLoader } from './components/WithLoader/WithLoader';
+
 import './index.scss';
-import { Button, ButtonColor } from './components/Button/Button';
-import { Card } from './components/Card/Card';
-import { Input } from './components/Input/Input';
-import { MultiDropdown } from './components/MultiDropdown/MultiDropdown';
-import { Option } from './components/MultiDropdown/types';
-import { CheckBox } from './components/CheckBox/CheckBox';
+
+import { Loader, LoaderSize } from '@components/Loader';
+import { WithLoader } from '@components/WithLoader';
+import { Button, ButtonColor } from '@components/Button';
+import { Card } from '@components/Card';
+import { Input } from '@components/Input';
+import { MultiDropdown, Option } from '@components/MultiDropdown';
+import { CheckBox } from '@components/CheckBox/CheckBox';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

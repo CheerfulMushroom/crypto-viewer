@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import './CheckBox.scss';
 
-type CheckBoxProps = Omit<
+export type CheckBoxProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'onChange'
 > & {
