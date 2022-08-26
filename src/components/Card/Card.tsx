@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import './Card.scss';
 
@@ -18,13 +19,16 @@ export const Card: React.FC<CardProps> = ({
   onClick,
 }) => {
   return (
-    <div className={'card'} onClick={onClick}>
-      <img className={'card_image'} src={image} alt={'Image'} />
-      <div className={'card_description'}>
-        <div className={'card_title'}>{title}</div>
-        <div className={'card_subtitle'}>{subtitle}</div>
+    <div
+      className={classNames('card', { card_interactive: !!onClick })}
+      onClick={onClick}
+    >
+      <img className={'card__image'} src={image} alt={'Image'} />
+      <div className={'card__description'}>
+        <div className={'card__title'}>{title}</div>
+        <div className={'card__subtitle'}>{subtitle}</div>
       </div>
-      <div className={'card_content'}>{content}</div>
+      <div className={'card__content'}>{content}</div>
     </div>
   );
 };
