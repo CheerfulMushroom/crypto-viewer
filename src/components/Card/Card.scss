@@ -25,7 +25,7 @@
   }
 
   &__title {
-    font-size: 16pt;
+    font-size: var(--font-size-big);
 
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -33,7 +33,6 @@
   }
 
   &__subtitle {
-    font-size: 12pt;
     color: var(--grey);
 
     text-overflow: ellipsis;

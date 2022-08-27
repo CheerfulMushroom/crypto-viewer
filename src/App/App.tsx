@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 import './App.scss';
 import { AllCoinsPage } from './pages/AllCoinsPage';
 import { Coin } from './types';
+import { CoinPage } from './pages/CoinPage';
 
 export const App: React.FC = () => {
   const [coins, setCoins] = React.useState<Coin[]>([]);
@@ -25,7 +26,8 @@ export const App: React.FC = () => {
 
   return (
     <React.StrictMode>
-      <AllCoinsPage coins={coins} />
+      {/* <AllCoinsPage coins={coins} /> */}
+      <CoinPage coin={coins[0]} />
     </React.StrictMode>
   );
 };
