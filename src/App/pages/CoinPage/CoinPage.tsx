@@ -3,15 +3,20 @@ import { useParams } from 'react-router-dom';
 
 import { Coin, CurrencyId } from 'src/App/types';
 
-import { getCoin } from '@utils/api';
+import { getCoin, getCoinPriceDynamic } from '@utils/api';
 import { prettifyPrice, sign } from '@utils/numbers';
 
 import { Card } from '@components/Card';
+import { PriceChart } from '@components/PriceChart';
+import type { Point } from '@components/PriceChart';
 
 export const CoinPage: React.FC = () => {
   const params = useParams();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [coin, setCoin] = useState<Coin | null>(null);
+  const [priceDynamic, setPriceDynamic] = useState<Point[]>([]);
+
+  const currency: CurrencyId = 'usd';
 
   useEffect(() => {
     const fetchCoin = async () => {
@@ -25,8 +30,24 @@ export const CoinPage: React.FC = () => {
       setCoin(coin);
     };
 
+    const fetchCoinPrices = async () => {
+      const prices = await getCoinPriceDynamic(
+        params.coinId || '',
+        currency,
+        30
+      );
+
+      if (prices === null) {
+        return;
+      }
+
+      // console.log(prices);
+      setPriceDynamic(prices);
+    };
+
     setIsLoading(true);
     fetchCoin();
+    fetchCoinPrices();
   }, [params.coinId]);
 
   if (isLoading) {
@@ -36,8 +57,6 @@ export const CoinPage: React.FC = () => {
   if (!coin) {
     return <div>Error getting the coin info :(</div>;
   }
-
-  const currency: CurrencyId = 'usd';
 
   const currentPriceString = `
     ${currency.toUpperCase()} ${prettifyPrice(
@@ -66,7 +85,8 @@ export const CoinPage: React.FC = () => {
         </div>
       </div>
 
-      <div className={'coin-page__price-chart'}>CHART!!!</div>
+      <PriceChart points={priceDynamic} showGrid />
+
       <div className={'coin-page__time-options'}></div>
       <Card image={coin.image.large} title={coin.name} subtitle={'00.00 BTC'} />
       <Card
