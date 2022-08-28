@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Coin } from 'src/App/types';
+import { Coin, CurrencyId } from 'src/App/types';
 
 import { getCoin } from '@utils/api';
+import { prettifyPrice, sign } from '@utils/numbers';
 
 import { Card } from '@components/Card';
 
@@ -36,6 +37,22 @@ export const CoinPage: React.FC = () => {
     return <div>Error getting the coin info :(</div>;
   }
 
+  const currency: CurrencyId = 'usd';
+
+  const currentPriceString = `
+    ${currency.toUpperCase()} ${prettifyPrice(
+    coin.market_data.current_price[currency]
+  )}`;
+
+  const priceChangeString = prettifyPrice(
+    coin.market_data.price_change_24h_in_currency[currency],
+    true
+  );
+  const priceChangePercentsString = prettifyPrice(
+    coin.market_data.price_change_percentage_24h_in_currency[currency],
+    true
+  );
+
   return (
     <div className={'coin-page'}>
       <div className={'coin-page__header'}>
@@ -43,8 +60,10 @@ export const CoinPage: React.FC = () => {
       </div>
 
       <div className={'coin-page__price-info'}>
-        <div className={'coin-page__current-price'}>`${coin.market_data.current_price}`</div>
-        <div className={'coin-page__price-dynamic'}>+ 1700.254 (9.77%)</div>
+        <div className={'coin-page__current-price'}>{currentPriceString}</div>
+        <div className={'coin-page__price-dynamic'}>
+          {priceChangeString} ({priceChangePercentsString})
+        </div>
       </div>
 
       <div className={'coin-page__price-chart'}>CHART!!!</div>
